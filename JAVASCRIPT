@@ -1,0 +1,40 @@
+// Animações de Aparição dos Produtos
+document.addEventListener('DOMContentLoaded', () => {
+    const productGrid = document.querySelector('.product-grid');
+    const products = [
+        { name: "Corrente Cartier", price: "R$ 1.000", image: "cartier.jpg" },
+        { name: "Pulseira Ouro", price: "R$ 800", image: "pulseira.jpg" },
+        { name: "Pingente Moeda", price: "R$ 500", image: "pingente.jpg" },
+        // Adicione mais produtos aqui
+    ];
+
+    products.forEach((product) => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product-item');
+        productElement.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" />
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+            <a href="#!" class="btn-primary">Comprar Agora</a>
+        `;
+        productGrid.appendChild(productElement);
+    });
+});
+
+// Animação de Transição de Página
+const btnPrimary = document.querySelectorAll('.btn-primary');
+btnPrimary.forEach((btn) => {
+    btn.addEventListener('mouseover', () => {
+        btn.style.transform = 'scale(1.05)';
+        btn.style.transition = 'all 0.3s';
+    });
+    btn.addEventListener('mouseout', () => {
+        btn.style.transform = 'scale(1)';
+    });
+});
+
+// Validação do Formulário de Contato
+document.querySelector('#contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Mensagem enviada com sucesso!');
+});
